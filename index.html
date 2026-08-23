@@ -39,6 +39,26 @@
             border-radius: 0;
         }
 
+        /* 默认（大屏>7.2英寸）：隐藏logo3 */
+        .logo-img.logo-3 {
+            display: none !important;
+        }
+
+        /* 屏幕小于等于7.2英寸（约691px）：隐藏logo1和logo2，只显示logo3 */
+        @media (max-width: 691px) {
+            .logo-img.logo-1,
+            .logo-img.logo-2 {
+                display: none !important;
+            }
+            .logo-img.logo-3 {
+                display: block !important;
+                height: 42px;
+            }
+            .logo-wrapper {
+                padding: 5px 18px !important; 
+            }
+        }
+
         p {
             font-size: 1.1rem;
             line-height: 1.6;
@@ -276,16 +296,12 @@
 
     <!-- Logo Section -->
     <div class="logo-wrapper">
-        <img src="logo1.jpg" alt="MW Icon" class="logo-img">
-        <img src="logo2.jpg" alt="MacWave Text" class="logo-img">
+        <img src="logo1.jpg" alt="MW Icon" class="logo-img logo-1">
+        <img src="logo2.jpg" alt="MacWave Text" class="logo-img logo-2">
+        <img src="logo3.jpg" alt="MacWave Logo" class="logo-img logo-3">
     </div>
 
     <p>An organization focus on Open-Source Project for macOS, Linux and WSL.</p>
-
-    <!-- Latest Version -->
-    <p style="color: #a0b0d0; font-size: 0.95rem; margin-top: -10px; margin-bottom: 30px;">
-        Latest Official Version : 1.0.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Latest Beta Version : 1.1 Beta2
-    </p>
 
     <a href="https://github.com/Sha0huaZhang/MacWave" class="btn-github">View On GitHub</a>
     
