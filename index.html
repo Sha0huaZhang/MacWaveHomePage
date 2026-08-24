@@ -59,6 +59,18 @@
             }
         }
 
+        /* ===== 新增：屏幕小于6.5英寸（约624px）===== */
+        @media (max-width: 624px) {
+            .logo-wrapper {
+                /* 左右宽度变为80%（即左右内边距为原值的80%） */
+                padding-left: 14.4px !important;  /* 18px * 0.8 */
+                padding-right: 14.4px !important;
+                /* 上下高度变为90%（即上下内边距为原值的90%） */
+                padding-top: 4.5px !important;    /* 5px * 0.9 */
+                padding-bottom: 4.5px !important;
+            }
+        }
+
         /* 副标题样式 */
         .subtitle {
             font-size: 1.1rem;
