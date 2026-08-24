@@ -48,6 +48,36 @@
             display: none !important;
         }
 
+        /* ===== 小屏：x < 605px（<6.3英寸） ===== */
+        @media (max-width: 604px) {
+            .logo-img.logo-1,
+            .logo-img.logo-2 {
+                display: none !important;
+            }
+            .logo-img.logo-3 {
+                display: block !important;
+                height: 40px !important;
+            }
+            .logo-wrapper {
+                padding: 4.5px 14.4px !important;
+            }
+        }
+
+        /* ===== 中屏：605px ≤ x < 691px（6.3~7.2英寸） ===== */
+        @media (min-width: 605px) and (max-width: 690px) {
+            .logo-img.logo-1,
+            .logo-img.logo-2 {
+                display: none !important;
+            }
+            .logo-img.logo-3 {
+                display: block !important;
+                height: 50px !important;
+            }
+            .logo-wrapper {
+                padding: 5px 18px !important;
+            }
+        }
+
         /* 副标题样式 */
         .subtitle {
             font-size: 1.1rem;
@@ -56,6 +86,13 @@
             max-width: 800px;
             text-align: center;
             margin: 0 auto 20px auto;
+        }
+
+        /* 手机端副标题强制居中 */
+        @media (max-width: 691px) {
+            .subtitle {
+                text-align: center !important;
+            }
         }
 
         p {
@@ -454,7 +491,7 @@
         <div class="contact-hint">Click the links to open.</div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript：动态强制所有卡片与第一张（MacWave）等宽 -->
     <script>
         // 复制功能
         function copyCode(btn) {
@@ -472,43 +509,6 @@
             });
         }
 
-        // ===== 核心：根据屏幕宽度动态设置 logo 显示和高度 =====
-        function applyLogoSettings() {
-            const logo1 = document.querySelector('.logo-1');
-            const logo2 = document.querySelector('.logo-2');
-            const logo3 = document.querySelector('.logo-3');
-            const wrapper = document.querySelector('.logo-wrapper');
-
-            if (!logo1 || !logo2 || !logo3 || !wrapper) return;
-
-            const width = window.innerWidth;
-
-            // 大屏：≥691px（≥7.2英寸）
-            if (width >= 691) {
-                logo1.style.display = 'block';
-                logo2.style.display = 'block';
-                logo3.style.display = 'none';
-                logo3.style.height = '50px';
-                wrapper.style.padding = '12px 25px';
-            }
-            // 中屏：605px ≤ width < 691px（6.3~7.2英寸）
-            else if (width >= 605 && width < 691) {
-                logo1.style.display = 'none';
-                logo2.style.display = 'none';
-                logo3.style.display = 'block';
-                logo3.style.height = '50px';
-                wrapper.style.padding = '5px 18px';
-            }
-            // 小屏：width < 605px（<6.3英寸）
-            else {
-                logo1.style.display = 'none';
-                logo2.style.display = 'none';
-                logo3.style.display = 'block';
-                logo3.style.height = '40px';
-                wrapper.style.padding = '4.5px 14.4px';
-            }
-        }
-
         // 强制卡片对齐逻辑
         function alignCards() {
             const container = document.getElementById('projectsContainer');
@@ -517,10 +517,12 @@
             const cards = container.querySelectorAll('.project-card');
             if (cards.length === 0) return;
 
+            // 获取第一张卡片（MacWave）的宽度作为基准
             const baseCard = cards[0];
             const baseWidth = baseCard.offsetWidth;
 
             if (baseWidth > 0) {
+                // 强制所有卡片宽度与第一张完全一致
                 cards.forEach(card => {
                     card.style.width = baseWidth + 'px';
                 });
@@ -528,16 +530,9 @@
         }
 
         // 页面加载完成后执行
-        window.addEventListener('load', () => {
-            applyLogoSettings();
-            alignCards();
-        });
-
-        // 窗口大小改变时重新执行
-        window.addEventListener('resize', () => {
-            applyLogoSettings();
-            alignCards();
-        });
+        window.addEventListener('load', alignCards);
+        // 窗口大小改变时重新对齐
+        window.addEventListener('resize', alignCards);
     </script>
 
 </body>
