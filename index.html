@@ -48,8 +48,8 @@
             display: none !important;
         }
 
-        /* ===== 小屏：width < 418px ===== */
-        @media (max-width: 417px) {
+        /* ===== 小屏：width < 691px（XR和Air统一） ===== */
+        @media (max-width: 690px) {
             .logo-img.logo-1,
             .logo-img.logo-2 {
                 display: none !important;
@@ -62,25 +62,10 @@
                 padding: 4.5px 14.4px !important;
             }
 
-            /* 小屏卡片：宽度减10%，高度减5% */
+            /* 卡片统一为40px标准（不缩放） */
             .project-card {
-                width: 90% !important;
-                height: 95% !important;
-            }
-        }
-
-        /* ===== 中屏：418px ≤ width < 691px ===== */
-        @media (min-width: 418px) and (max-width: 690px) {
-            .logo-img.logo-1,
-            .logo-img.logo-2 {
-                display: none !important;
-            }
-            .logo-img.logo-3 {
-                display: block !important;
-                height: 50px !important;
-            }
-            .logo-wrapper {
-                padding: 5px 18px !important;
+                width: 100% !important;
+                height: 100% !important;
             }
         }
 
