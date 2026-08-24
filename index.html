@@ -39,35 +39,33 @@
             border-radius: 0;
         }
 
-        /* 默认（大屏>7.2英寸）：隐藏logo3 */
+        /* 屏幕大于7.2英寸：默认显示logo1/logo2，高度50px */
         .logo-img.logo-3 {
             display: none !important;
         }
 
-        /* ===== 屏幕6.5-7.2英寸（约625px-691px）===== */
+        /* 屏幕6.5-7.2英寸（625px-691px）：显示logo3，高度50px */
         @media (min-width: 625px) and (max-width: 691px) {
-            .logo-img.logo-1,
-            .logo-img.logo-2 {
+            .logo-img.logo-1, .logo-img.logo-2 {
                 display: none !important;
             }
             .logo-img.logo-3 {
                 display: block !important;
-                height: 50px !important;  /* 强制50px */
+                height: 50px !important;
             }
             .logo-wrapper {
                 padding: 5px 18px !important;
             }
         }
 
-        /* ===== 屏幕小于6.5英寸（约624px）===== */
+        /* 屏幕小于6.5英寸（<624px）：显示logo3，高度40px */
         @media (max-width: 624px) {
+            .logo-img.logo-1, .logo-img.logo-2 {
+                display: none !important;
+            }
             .logo-img.logo-3 {
                 display: block !important;
-                height: 40px !important;  /* 强制40px */
-            }
-            .logo-img.logo-1,
-            .logo-img.logo-2 {
-                display: none !important;
+                height: 40px !important;
             }
             .logo-wrapper {
                 padding: 4.5px 14.4px !important;
