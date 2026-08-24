@@ -59,6 +59,23 @@
             }
         }
 
+        /* 副标题样式 */
+        .subtitle {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            max-width: 800px;
+            text-align: center;  /* 默认居中 */
+            margin: 0 auto 20px auto;
+        }
+
+        /* 手机端副标题强制居中 */
+        @media (max-width: 691px) {
+            .subtitle {
+                text-align: center !important;
+            }
+        }
+
         p {
             font-size: 1.1rem;
             line-height: 1.6;
@@ -348,7 +365,8 @@
         <img src="logo3.jpg" alt="MacWave Logo" class="logo-img logo-3">
     </div>
 
-    <p>An organization focus on Open-Source Project for macOS, Linux and WSL.</p>
+    <!-- 副标题（手机端居中） -->
+    <p class="subtitle">An organization focus on Open-Source Project for macOS, Linux and WSL.</p>
 
     <a href="https://github.com/Sha0huaZhang/MacWave" class="btn-github">View On GitHub</a>
     
