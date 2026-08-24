@@ -291,7 +291,7 @@
             background-color: rgba(30, 42, 74, 0.3);
         }
 
-        /* === Our Projects 项目卡片样式（纵向居中，白色圆角卡片） === */
+        /* === Our Projects 项目卡片样式（统一宽度，图片居中，两侧留白） === */
         .projects-container {
             display: flex;
             flex-direction: column;
@@ -311,7 +311,9 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             text-decoration: none;
-            max-width: 90%;
+            width: 100%;              /* 新增：占满父容器宽度 */
+            max-width: 380px;         /* 新增：统一最大宽度（根据最宽图片调整） */
+            box-sizing: border-box;   /* 新增：让 padding 算在宽度内 */
         }
 
         .project-card:hover {
@@ -322,7 +324,9 @@
         .project-img-big {
             height: 50px;
             width: auto;
+            max-width: 100%;          /* 新增：图片不超出卡片 */
             display: block;
+            margin: 0 auto;           /* 新增：图片在卡片内居中 */
             border-radius: 0;
         }
 
@@ -338,9 +342,12 @@
             .project-img-small {
                 display: block !important;
                 height: 42px;
+                max-width: 100%;      /* 新增：小屏图片也不超出 */
+                margin: 0 auto;       /* 新增：小屏图片居中 */
             }
             .project-card {
                 padding: 5px 18px !important;
+                max-width: 300px !important;   /* 新增：小屏统一宽度 */
             }
         }
     </style>
