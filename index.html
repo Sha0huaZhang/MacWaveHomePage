@@ -52,7 +52,7 @@
             }
             .logo-img.logo-3 {
                 display: block !important;
-                height: 50px;
+                height: 50px !important;
             }
             .logo-wrapper {
                 padding: 5px 18px !important; 
@@ -61,13 +61,16 @@
 
         /* ===== 屏幕小于6.3英寸（约605px）===== */
         @media (max-width: 605px) {
+            .logo-img.logo-1,
+            .logo-img.logo-2 {
+                display: none !important;
+            }
+            .logo-img.logo-3 {
+                display: block !important;
+                height: 40px !important;  /* 50px * 0.8 = 40px */
+            }
             .logo-wrapper {
-                /* 左右宽度变为80%（即左右内边距为原值的80%） */
-                padding-left: 14.4px !important;  /* 18px * 0.8 */
-                padding-right: 14.4px !important;
-                /* 上下高度变为90%（即上下内边距为原值的90%） */
-                padding-top: 4.5px !important;    /* 5px * 0.9 */
-                padding-bottom: 4.5px !important;
+                padding: 4.5px 14.4px !important;
             }
         }
 
