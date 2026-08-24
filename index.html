@@ -264,7 +264,7 @@
             background-color: rgba(30, 42, 74, 0.3);
         }
 
-        /* === Our Projects 项目卡片样式：统一最宽，图片禁止缩放 === */
+        /* === Our Projects 项目卡片样式 === */
         .projects-container {
             display: flex;
             flex-direction: column;
@@ -310,22 +310,28 @@
             display: none !important;
         }
 
-        /* 屏幕小于等于7.2英寸（约691px）：隐藏 big 图片，显示 small 图片 */
+        /* 屏幕小于等于7.2英寸（约691px） */
         @media (max-width: 691px) {
             .project-img-big {
                 display: none !important;
             }
             .project-img-small {
                 display: block !important;
-                height: 36px;     /* 42px 减少15% ≈ 36px */
+                height: 32px;     /* 36px 减少10% ≈ 32px */
                 max-width: none;
                 flex-shrink: 0;
                 margin: 0 auto;
             }
             .project-card {
-                padding: 6px 14px !important;
+                padding: 6px 7px !important;  /* 左右留白减少50%：14px→7px */
                 width: fit-content;
                 max-width: 100%;
+            }
+
+            /* 表格宽度减少20% */
+            .about-projects-table {
+                width: 80% !important;
+                margin: 0 auto 20px auto;
             }
         }
     </style>
