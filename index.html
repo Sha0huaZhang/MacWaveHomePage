@@ -72,40 +72,7 @@
             }
         }
 
-        /* ===== 所有位置在7.2英寸以下统一处理 ===== */
-        @media (max-width: 691px) {
-            .subtitle {
-                text-align: center !important;
-            }
-            
-            .project-img-big {
-                display: none !important;
-            }
-            .project-img-small {
-                display: block !important;
-                height: 36px;
-                max-width: none;
-                flex-shrink: 0;
-                margin: 0 auto;
-            }
-            
-            .project-card {
-                padding: 6px 14px !important;
-                box-sizing: border-box;
-            }
-            
-            .about-projects-table {
-                width: 86% !important;
-                font-size: 1rem !important;
-                margin: 0 auto 20px auto;
-            }
-            .about-projects-table th,
-            .about-projects-table td {
-                padding: 8px 6px !important;
-            }
-        }
-
-        /* 副标题默认样式 */
+        /* 副标题样式 */
         .subtitle {
             font-size: 1.1rem;
             line-height: 1.6;
@@ -364,6 +331,34 @@
 
         .project-img-small {
             display: none !important;
+        }
+
+        /* 屏幕小于等于7.2英寸（约691px）：隐藏 big 图片，显示 small 图片 */
+        @media (max-width: 691px) {
+            .project-img-big {
+                display: none !important;
+            }
+            .project-img-small {
+                display: block !important;
+                height: 36px;
+                max-width: none;
+                flex-shrink: 0;
+                margin: 0 auto;
+            }
+            .project-card {
+                padding: 6px 14px !important;
+                box-sizing: border-box;
+            }
+            /* 手机端：表格字体恢复1rem */
+            .about-projects-table {
+                width: 86% !important;
+                font-size: 1rem !important;
+                margin: 0 auto 20px auto;
+            }
+            .about-projects-table th,
+            .about-projects-table td {
+                padding: 8px 6px !important;
+            }
         }
     </style>
 </head>
