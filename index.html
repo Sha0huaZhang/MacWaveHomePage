@@ -245,8 +245,8 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.4;
             color: #ffffff;
         }
         .about-projects-table th,
@@ -255,6 +255,7 @@
             padding: 12px 20px;
             text-align: center;
             font-weight: bold;
+            /* 已删除 white-space: nowrap，允许正常换行 */
         }
         .about-projects-table th {
             background-color: #1e2a4a;
@@ -327,10 +328,16 @@
                 width: fit-content;
                 max-width: 100%;
             }
-            /* 手机端：表格宽度减少至72%（80%再减少10%） */
+            /* 手机端：表格宽度72%，字体/内边距缩小，允许正常换行 */
             .about-projects-table {
                 width: 72% !important;
+                font-size: 0.85rem !important;
                 margin: 0 auto 20px auto;
+            }
+            .about-projects-table th,
+            .about-projects-table td {
+                padding: 8px 6px !important;
+                /* 不设置 white-space，保持默认换行 */
             }
         }
     </style>
