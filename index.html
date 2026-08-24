@@ -62,12 +62,23 @@
         /* ===== 新增：屏幕小于6.5英寸（约624px）===== */
         @media (max-width: 624px) {
             .logo-wrapper {
-                /* 左右宽度变为80%（即左右内边距为原值的80%） */
-                padding-left: 14.4px !important;  /* 18px * 0.8 */
-                padding-right: 14.4px !important;
-                /* 上下高度变为90%（即上下内边距为原值的90%） */
-                padding-top: 4.5px !important;    /* 5px * 0.9 */
-                padding-bottom: 4.5px !important;
+                /* 强制覆盖所有padding值 */
+                padding-top: 4.5px !important;      /* 5px * 0.9 */
+                padding-bottom: 4.5px !important;   /* 5px * 0.9 */
+                padding-left: 14.4px !important;     /* 18px * 0.8 */
+                padding-right: 14.4px !important;    /* 18px * 0.8 */
+                /* 同时明确设置上下左右 */
+                padding: 4.5px 14.4px !important;
+            }
+            
+            /* 确保logo3在6.5英寸以下也强制显示 */
+            .logo-img.logo-3 {
+                display: block !important;
+                height: 50px;
+            }
+            .logo-img.logo-1,
+            .logo-img.logo-2 {
+                display: none !important;
             }
         }
 
