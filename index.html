@@ -264,7 +264,7 @@
             background-color: rgba(30, 42, 74, 0.3);
         }
 
-        /* === Our Projects 项目卡片样式：统一最宽，图片禁止缩放 === */
+        /* === Our Projects 项目卡片样式：以 MacWave 宽度为准，图片禁止缩放 === */
         .projects-container {
             display: flex;
             flex-direction: column;
@@ -274,6 +274,7 @@
             width: 100%;
         }
 
+        /* 默认用 JS 动态设置宽度，这里只做基础样式 */
         .project-card {
             background-color: #ffffff;
             border-radius: 30px;
@@ -284,9 +285,8 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             text-decoration: none;
-            width: fit-content;
-            max-width: 100%;
             margin: 0 auto;
+            box-sizing: border-box;
         }
 
         .project-card:hover {
@@ -294,7 +294,7 @@
             box-shadow: 0 8px 20px rgba(255,255,255,0.2);
         }
 
-        /* 图片禁止缩放，保持原始尺寸 */
+        /* 图片绝对禁止缩放（不拉伸、不压缩），保持原图比例 */
         .project-img-big,
         .project-img-small {
             height: 50px;
@@ -324,10 +324,9 @@
             }
             .project-card {
                 padding: 6px 14px !important;
-                width: fit-content;
-                max-width: 100%;
+                box-sizing: border-box;
             }
-            /* 手机端：表格宽度扩大1/5（72% → 86%），字体恢复80% */
+            /* 手机端：表格宽度86%，字体80% */
             .about-projects-table {
                 width: 86% !important;
                 font-size: 0.8rem !important;
@@ -369,9 +368,9 @@
 
         <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;">Our Projects</h2>
         
-        <!-- Our Projects 卡片列表（纵向居中） -->
-        <div class="projects-container">
-            <!-- Project 1 -->
+        <!-- Our Projects 卡片列表（纵向居中，动态对齐） -->
+        <div class="projects-container" id="projectsContainer">
+            <!-- Project 1: 基准宽度（MacWave） -->
             <a href="https://macwave.org" class="project-card" target="_blank">
                 <img src="project1_big.jpg" alt="MacWave" class="project-img-big">
                 <img src="project1_small.jpg" alt="MacWave" class="project-img-small">
@@ -455,8 +454,9 @@
         <div class="contact-hint">Click the links to open.</div>
     </div>
 
-    <!-- JavaScript for Copy Functionality -->
+    <!-- JavaScript：动态强制所有卡片与第一张（MacWave）等宽 -->
     <script>
+        // 复制功能
         function copyCode(btn) {
             const pre = btn.parentElement.querySelector('pre');
             if (!pre) return;
@@ -471,6 +471,31 @@
                 console.error('Failed to copy text: ', err);
             });
         }
+
+        // 强制卡片对齐逻辑
+        function alignCards() {
+            const container = document.getElementById('projectsContainer');
+            if (!container) return;
+            
+            const cards = container.querySelectorAll('.project-card');
+            if (cards.length === 0) return;
+
+            // 获取第一张卡片（MacWave）的宽度作为基准
+            const baseCard = cards[0];
+            const baseWidth = baseCard.offsetWidth; // 获取当前实际宽度
+
+            if (baseWidth > 0) {
+                // 强制所有卡片宽度与第一张完全一致
+                cards.forEach(card => {
+                    card.style.width = baseWidth + 'px';
+                });
+            }
+        }
+
+        // 页面加载完成后执行
+        window.addEventListener('load', alignCards);
+        // 窗口大小改变时重新对齐
+        window.addEventListener('resize', alignCards);
     </script>
 
 </body>
