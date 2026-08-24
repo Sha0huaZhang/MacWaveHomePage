@@ -44,31 +44,30 @@
             display: none !important;
         }
 
-        /* ===== 屏幕6.5-7.2英寸（625px-691px）===== */
-        @media (min-width: 625px) and (max-width: 691px) {
-            .logo-img.logo-1, .logo-img.logo-2 {
+        /* 屏幕小于等于7.2英寸（约691px）：隐藏logo1和logo2，只显示logo3 */
+        @media (max-width: 691px) {
+            .logo-img.logo-1,
+            .logo-img.logo-2 {
                 display: none !important;
             }
             .logo-img.logo-3 {
                 display: block !important;
-                height: 50px !important;
+                height: 50px;
             }
             .logo-wrapper {
-                padding: 5px 18px !important;
+                padding: 5px 18px !important; 
             }
         }
 
-        /* ===== 屏幕小于6.5英寸（<624px）===== */
-        @media (max-width: 624px) {
-            .logo-img.logo-1, .logo-img.logo-2 {
-                display: none !important;
-            }
-            .logo-img.logo-3 {
-                display: block !important;
-                height: 40px !important;
-            }
+        /* ===== 屏幕小于6.3英寸（约605px）===== */
+        @media (max-width: 605px) {
             .logo-wrapper {
-                padding: 4.5px 14.4px !important;
+                /* 左右宽度变为80%（即左右内边距为原值的80%） */
+                padding-left: 14.4px !important;  /* 18px * 0.8 */
+                padding-right: 14.4px !important;
+                /* 上下高度变为90%（即上下内边距为原值的90%） */
+                padding-top: 4.5px !important;    /* 5px * 0.9 */
+                padding-bottom: 4.5px !important;
             }
         }
 
@@ -78,8 +77,15 @@
             line-height: 1.6;
             opacity: 0.9;
             max-width: 800px;
-            text-align: center;
+            text-align: center;  /* 默认居中 */
             margin: 0 auto 20px auto;
+        }
+
+        /* 手机端副标题强制居中 */
+        @media (max-width: 691px) {
+            .subtitle {
+                text-align: center !important;
+            }
         }
 
         p {
@@ -375,7 +381,7 @@
     <p class="subtitle">An organization focus on Open-Source Project for macOS, Linux and WSL.</p>
 
     <a href="https://github.com/Sha0huaZhang" class="btn-github">View On GitHub</a>
-
+    
     <!-- Main Content -->
     <div class="content-section" style="margin: 0 auto; padding: 20px; color: #ffffff; text-align: left;">
 
@@ -391,7 +397,7 @@
         </p>
 
         <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;">Our Projects <span style="font-size: 0.8em; font-weight: normal;">(Click to open)</span></h2>
-
+        
         <!-- Our Projects 卡片列表（纵向居中，动态对齐） -->
         <div class="projects-container" id="projectsContainer">
             <!-- Project 1: 基准宽度（MacWave） -->
