@@ -48,8 +48,8 @@
             display: none !important;
         }
 
-        /* ===== 小屏：x < 605px（<6.3英寸） ===== */
-        @media (max-width: 604px) {
+        /* ===== 小屏：width < 400px ===== */
+        @media (max-width: 399px) {
             .logo-img.logo-1,
             .logo-img.logo-2 {
                 display: none !important;
@@ -63,8 +63,8 @@
             }
         }
 
-        /* ===== 中屏：605px ≤ x < 691px（6.3~7.2英寸） ===== */
-        @media (min-width: 605px) and (max-width: 690px) {
+        /* ===== 中屏：400px ≤ width < 691px ===== */
+        @media (min-width: 400px) and (max-width: 690px) {
             .logo-img.logo-1,
             .logo-img.logo-2 {
                 display: none !important;
@@ -76,6 +76,11 @@
             .logo-wrapper {
                 padding: 5px 18px !important;
             }
+        }
+
+        /* ===== 大屏：width ≥ 691px ===== */
+        @media (min-width: 691px) {
+            /* 默认样式已生效 */
         }
 
         /* 副标题样式 */
