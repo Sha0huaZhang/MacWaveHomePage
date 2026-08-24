@@ -44,34 +44,28 @@
             display: none !important;
         }
 
-        /* ===== 屏幕小于6.5英寸（约624px）===== */
-        @media (max-width: 624px) {
-            .logo-wrapper {
-                padding: 4.5px 14.4px !important;
-            }
-            
-            .logo-img.logo-3 {
-                display: block !important;
-                height: 40px !important;  /* 50px * 0.8 = 40px */
-            }
+        /* ===== 屏幕小于等于7.2英寸（约691px）===== */
+        @media (max-width: 691px) {
             .logo-img.logo-1,
             .logo-img.logo-2 {
                 display: none !important;
+            }
+            .logo-img.logo-3 {
+                display: block !important;
+                height: 50px;
+            }
+            .logo-wrapper {
+                padding: 5px 18px;
             }
         }
 
-        /* ===== 屏幕6.5-7.2英寸（624px-691px）===== */
-        @media (min-width: 625px) and (max-width: 691px) {
-            .logo-img.logo-1,
-            .logo-img.logo-2 {
-                display: none !important;
-            }
+        /* ===== 屏幕小于6.5英寸（约624px）===== */
+        @media (max-width: 624px) {
             .logo-img.logo-3 {
-                display: block !important;
-                height: 50px !important;
+                height: 40px !important;  /* 50px * 0.8 = 40px */
             }
             .logo-wrapper {
-                padding: 5px 18px !important; 
+                padding: 4.5px 14.4px !important;
             }
         }
 
@@ -81,7 +75,7 @@
             line-height: 1.6;
             opacity: 0.9;
             max-width: 800px;
-            text-align: center;  /* 默认居中 */
+            text-align: center;
             margin: 0 auto 20px auto;
         }
 
@@ -385,7 +379,7 @@
     <p class="subtitle">An organization focus on Open-Source Project for macOS, Linux and WSL.</p>
 
     <a href="https://github.com/Sha0huaZhang" class="btn-github">View On GitHub</a>
-    
+
     <!-- Main Content -->
     <div class="content-section" style="margin: 0 auto; padding: 20px; color: #ffffff; text-align: left;">
 
@@ -401,7 +395,7 @@
         </p>
 
         <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;">Our Projects <span style="font-size: 0.8em; font-weight: normal;">(Click to open)</span></h2>
-        
+
         <!-- Our Projects 卡片列表（纵向居中，动态对齐） -->
         <div class="projects-container" id="projectsContainer">
             <!-- Project 1: 基准宽度（MacWave） -->
