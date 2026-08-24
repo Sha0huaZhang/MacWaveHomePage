@@ -61,6 +61,12 @@
             .logo-wrapper {
                 padding: 4.5px 14.4px !important;
             }
+
+            /* 小屏卡片：宽度减10%，高度减5% */
+            .project-card {
+                width: 90% !important;
+                height: 95% !important;
+            }
         }
 
         /* ===== 中屏：418px ≤ width < 691px ===== */
@@ -328,6 +334,7 @@
             text-decoration: none;
             margin: 0 auto;
             box-sizing: border-box;
+            width: 100%;
         }
 
         .project-card:hover {
@@ -496,7 +503,7 @@
         <div class="contact-hint">Click the links to open.</div>
     </div>
 
-    <!-- JavaScript：动态强制所有卡片与第一张（MacWave）等宽 -->
+    <!-- JavaScript：只保留复制功能 -->
     <script>
         // 复制功能
         function copyCode(btn) {
@@ -513,31 +520,6 @@
                 console.error('Failed to copy text: ', err);
             });
         }
-
-        // 强制卡片对齐逻辑
-        function alignCards() {
-            const container = document.getElementById('projectsContainer');
-            if (!container) return;
-            
-            const cards = container.querySelectorAll('.project-card');
-            if (cards.length === 0) return;
-
-            // 获取第一张卡片（MacWave）的宽度作为基准
-            const baseCard = cards[0];
-            const baseWidth = baseCard.offsetWidth;
-
-            if (baseWidth > 0) {
-                // 强制所有卡片宽度与第一张完全一致
-                cards.forEach(card => {
-                    card.style.width = baseWidth + 'px';
-                });
-            }
-        }
-
-        // 页面加载完成后执行
-        window.addEventListener('load', alignCards);
-        // 窗口大小改变时重新对齐
-        window.addEventListener('resize', alignCards);
     </script>
 
 </body>
