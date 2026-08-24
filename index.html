@@ -240,33 +240,6 @@
             margin-top: 6px;
         }
 
-        /* --- 新增样式：与 "In the terminal..." 完全一致的纯白色字体 --- */
-        .install-note {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            opacity: 0.9;
-            max-width: 800px;
-            text-align: left;
-            color: #ffffff;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        .install-note strong {
-            font-weight: bold;
-            color: #ffffff;
-        }
-        .install-note .small-link-text {
-            font-size: 0.825rem;
-            display: inline-block;
-        }
-        .install-note a {
-            color: #ffffff;
-            text-decoration: underline;
-        }
-        .install-note a:hover {
-            opacity: 0.8;
-        }
-
         /* === About Projects 表格样式 === */
         .about-projects-table {
             width: 100%;
@@ -311,7 +284,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             text-decoration: none;
-            /* 关键：宽度由最宽图片自然撑开，不设固定宽度，不缩放图片 */
             width: fit-content;
             max-width: 100%;
             margin: 0 auto;
@@ -327,8 +299,8 @@
         .project-img-small {
             height: 50px;
             width: auto;
-            max-width: none;      /* 禁止缩放 */
-            flex-shrink: 0;       /* 防止压缩 */
+            max-width: none;
+            flex-shrink: 0;
             display: block;
             margin: 0 auto;
             border-radius: 0;
@@ -345,13 +317,13 @@
             }
             .project-img-small {
                 display: block !important;
-                height: 42px;     /* 小屏只改高度，宽度依然自适应 */
-                max-width: none;  /* 小屏也禁止缩放 */
+                height: 36px;     /* 42px 减少15% ≈ 36px */
+                max-width: none;
                 flex-shrink: 0;
                 margin: 0 auto;
             }
             .project-card {
-                padding: 5px 18px !important;
+                padding: 6px 14px !important;
                 width: fit-content;
                 max-width: 100%;
             }
