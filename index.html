@@ -17,6 +17,7 @@
             text-align: center;
             margin: 0;
             padding: 20px;
+            box-sizing: border-box;
         }
 
         /* White rounded card for logo */
@@ -91,6 +92,9 @@
             max-width: 800px;
             text-align: center;
             margin: 0 auto 20px auto;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         /* 手机端副标题强制居中 */
@@ -106,6 +110,9 @@
             opacity: 0.9;
             max-width: 800px;
             text-align: left;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         .btn-github {
@@ -143,9 +150,15 @@
             border: 1px solid #3a4a6a;
             font-size: 0.9rem;
             white-space: pre-wrap;
-            word-break: break-word;
+            word-break: break-all;
+            overflow-wrap: break-word;
             text-align: left;
             margin: 0;
+            padding-right: 20px;
+        }
+
+        /* 有复制按钮的pre，添加右侧padding */
+        .code-container.has-copy-btn pre {
             padding-right: 70px;
         }
 
@@ -378,6 +391,25 @@
             .about-projects-table td {
                 padding: 8px 6px !important;
             }
+        }
+
+        /* 修改所有正文段落和标题的换行 */
+        .content-section h2 {
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .content-section p {
+            word-break: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        /* 特别处理无复制按钮的pre */
+        .code-container:not(.has-copy-btn) pre {
+            padding-right: 20px;
+            word-break: break-all;
+            overflow-wrap: anywhere;
         }
     </style>
 </head>
