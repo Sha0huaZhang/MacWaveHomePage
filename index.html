@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="lang-en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
@@ -388,9 +388,51 @@
                 padding: 8px 6px !important;
             }
         }
+
+        /* ========== 语言切换 ========== */
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .lang-btn {
+            background-color: rgba(255,255,255,0.25);
+            color: #ffffff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            background-color: rgba(255,255,255,0.4);
+            transform: translateY(-1px);
+        }
+
+        .lang-btn.active {
+            background-color: #ffffff;
+            color: #0a1b3f;
+        }
+
+        /* 只显示当前语言的内容 */
+        .lang-zh [data-lang="en"],
+        .lang-en [data-lang="zh"] {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+
+    <!-- 语言切换 -->
+    <div class="lang-switch">
+        <button class="lang-btn" type="button" data-lang-set="en" onclick="setLanguage('en')">English</button>
+        <button class="lang-btn" type="button" data-lang-set="zh" onclick="setLanguage('zh')">简体中文</button>
+    </div>
 
     <!-- Logo Section -->
     <div class="logo-wrapper">
@@ -400,25 +442,36 @@
     </div>
 
     <!-- 副标题（手机端居中） -->
-    <p class="subtitle">An organization focus on Open-Source Project for macOS, Linux and WSL.</p>
+    <p class="subtitle" data-lang="en">An organization focus on Open-Source Project for macOS, Linux and WSL.</p>
+    <p class="subtitle" data-lang="zh">专注于 macOS、Linux 和 WSL 的开源项目组织。</p>
 
-    <a href="https://github.com/Sha0huaZhang" class="btn-github">View On GitHub</a>
+    <a href="https://github.com/Sha0huaZhang" class="btn-github" data-lang="en">View On GitHub</a>
+    <a href="https://github.com/Sha0huaZhang" class="btn-github" data-lang="zh">在 GitHub 上查看</a>
     
     <!-- Main Content -->
     <div class="content-section" style="margin: 0 auto; padding: 20px; color: #ffffff; text-align: left;">
 
-        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px;">About Us</h2>
-        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;">
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px;" data-lang="en">About Us</h2>
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px;" data-lang="zh">关于我们</h2>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="en">
             <strong>MacWave Team</strong> is an organization focus on <strong>Open-Source Project</strong> for <strong>macOS, Linux and WSL</strong>, aimed at addressing the lack of professional tools for certain common operations. <strong>We welcome your valuable suggestions!</strong>
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="zh">
+            <strong>MacWave 团队</strong> 是一个专注于 <strong>macOS、Linux 和 WSL</strong> 的 <strong>开源项目</strong> 组织，致力于解决某些常见操作缺乏专业工具的问题。<strong>我们欢迎您提出宝贵的建议！</strong>
         </p>
 
         <!-- ====== Supported System 栏目 ====== -->
-        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;">Supported Systems</h2>
-        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 1; font-weight: bold; color: #ffffff;">
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="en">Supported Systems</h2>
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="zh">支持的系统</h2>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 1; font-weight: bold; color: #ffffff;" data-lang="en">
             macOS, Linux or WSL.
         </p>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 1; font-weight: bold; color: #ffffff;" data-lang="zh">
+            macOS、Linux 或 WSL。
+        </p>
 
-        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;">Our Projects <span style="font-size: 0.8em; font-weight: normal;">(Click to open)</span></h2>
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="en">Our Projects <span style="font-size: 0.8em; font-weight: normal;">(Click to open)</span></h2>
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="zh">我们的项目 <span style="font-size: 0.8em; font-weight: normal;">（点击打开）</span></h2>
         
         <!-- Our Projects 卡片列表（纵向居中，动态对齐） -->
         <div class="projects-container" id="projectsContainer">
@@ -450,13 +503,17 @@
         </div>
 
         <!-- ====== About Projects 表格 ====== -->
-        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;">About Projects</h2>
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="en">About Projects</h2>
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="zh">关于项目</h2>
         <table class="about-projects-table">
             <thead>
                 <tr>
-                    <th>Project</th>
-                    <th>Language</th>
-                    <th>License</th>
+                    <th data-lang="en">Project</th>
+                    <th data-lang="zh">项目</th>
+                    <th data-lang="en">Language</th>
+                    <th data-lang="zh">语言</th>
+                    <th data-lang="en">License</th>
+                    <th data-lang="zh">许可证</th>
                 </tr>
             </thead>
             <tbody>
@@ -491,7 +548,8 @@
 
     <!-- Contact Us -->
     <div class="contact-section">
-        <h2>Contact Us</h2>
+        <h2 data-lang="en">Contact Us</h2>
+        <h2 data-lang="zh">联系我们</h2>
         <div class="contact-divider"></div>
         <div class="contact-items">
             <div class="contact-item">
@@ -507,7 +565,8 @@
                 <a href="mailto:hi@macwave.org">hi@macwave.org</a>
             </div>
         </div>
-        <div class="contact-hint">Click the links to open.</div>
+        <div class="contact-hint" data-lang="en">Click the links to open.</div>
+        <div class="contact-hint" data-lang="zh">点击链接即可打开。</div>
     </div>
 
     <!-- JavaScript：只保留复制功能 -->
@@ -527,6 +586,28 @@
                 console.error('Failed to copy text: ', err);
             });
         }
+
+        // 语言切换
+        function setLanguage(lang) {
+            const root = document.documentElement;
+            root.classList.remove('lang-en', 'lang-zh');
+            root.classList.add('lang-' + lang);
+            root.lang = (lang === 'zh') ? 'zh-Hans' : 'en';
+            document.querySelectorAll('.lang-btn').forEach(function (btn) {
+                btn.classList.toggle('active', btn.getAttribute('data-lang-set') === lang);
+            });
+            try { localStorage.setItem('macwave-lang', lang); } catch (e) {}
+        }
+
+        (function () {
+            let saved = null;
+            try { saved = localStorage.getItem('macwave-lang'); } catch (e) {}
+            if (saved !== 'en' && saved !== 'zh') {
+                const nav = (navigator.language || 'en').toLowerCase();
+                saved = nav.indexOf('zh') === 0 ? 'zh' : 'en';
+            }
+            setLanguage(saved);
+        })();
     </script>
 
 </body>
