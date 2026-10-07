@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>MacWave</title>
     <style>
+        /* 全局：顶部卡片与项目卡片共用同一宽度上限，
+           保证两者宽度与中心线一致，并且永不横向溢出 */
+        :root {
+            --card-max: 800px;
+        }
+
         body {
             background-color: #0a1b3f;
             color: #ffffff;
@@ -17,6 +23,7 @@
             text-align: center;
             margin: 0;
             padding: 20px;
+            box-sizing: border-box;
         }
 
         /* White rounded card for logo */
@@ -30,6 +37,13 @@
             gap: 0;
             margin-bottom: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            /* 与 .project-card 同一套宽度模型 */
+            width: 100%;
+            max-width: var(--card-max);
+            box-sizing: border-box;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
         }
 
         .logo-img {
@@ -37,6 +51,21 @@
             width: auto;
             display: block;
             border-radius: 0;
+            /* 窄屏时按比例缩小，不用固定宽度把卡片撑破 */
+            max-width: 100%;
+            min-width: 0;
+            flex: 0 1 auto;
+            object-fit: contain;
+        }
+
+        /* 内容区：与卡片共用同一宽度，去掉左右内边距，
+           使 .project-card 的 100% 恰好等于 .logo-wrapper 的宽度 */
+        .content-section {
+            width: 100%;
+            max-width: var(--card-max);
+            margin: 0 auto;
+            box-sizing: border-box;
+            overflow-wrap: anywhere;
         }
 
         /* 默认（大屏） */
@@ -338,6 +367,8 @@
             margin: 0 auto;
             box-sizing: border-box;
             width: 100%;
+            /* 与 .logo-wrapper 同一套宽度模型 */
+            max-width: var(--card-max);
         }
 
         .project-card:hover {
@@ -345,13 +376,15 @@
             box-shadow: 0 8px 20px rgba(255,255,255,0.2);
         }
 
-        /* 图片绝对禁止缩放（不拉伸、不压缩），保持原图比例 */
+        /* 保持原图比例；窄屏时必须能缩小，否则会把卡片撑破（与 logo 同一处理） */
         .project-img-big,
         .project-img-small {
             height: 50px;
             width: auto;
-            max-width: none;
-            flex-shrink: 0;
+            max-width: 100%;
+            min-width: 0;
+            flex: 0 1 auto;
+            object-fit: contain;
             display: block;
             margin: 0 auto;
             border-radius: 0;
@@ -369,8 +402,10 @@
             .project-img-small {
                 display: block !important;
                 height: 36px;
-                max-width: none;
-                flex-shrink: 0;
+                max-width: 100%;
+                min-width: 0;
+                flex: 0 1 auto;
+                object-fit: contain;
                 margin: 0 auto;
             }
             .project-card {
@@ -449,7 +484,7 @@
     <a href="https://github.com/Sha0huaZhang" class="btn-github" data-lang="zh">在 GitHub 上查看</a>
     
     <!-- Main Content -->
-    <div class="content-section" style="margin: 0 auto; padding: 20px; color: #ffffff; text-align: left;">
+    <div class="content-section" style="padding: 20px 0; color: #ffffff; text-align: left;">
 
         <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px;" data-lang="en">About Us</h2>
         <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px;" data-lang="zh">关于我们</h2>
