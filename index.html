@@ -394,6 +394,30 @@
             display: none !important;
         }
 
+        /* 合作项目说明：与卡片同一套宽度模型，让文字右边缘和白色卡片右边缘对齐 */
+        .partner-credit {
+            width: 100%;
+            max-width: var(--card-max);
+            margin: 0 auto;
+            text-align: right;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #ffffff;
+            opacity: 0.95;
+        }
+
+        .partner-credit a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .partner-credit a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
         /* 屏幕小于等于7.2英寸（约691px）：隐藏 big 图片，显示 small 图片 */
         @media (max-width: 691px) {
             .project-img-big {
@@ -411,6 +435,9 @@
             .project-card {
                 padding: 6px 14px !important;
                 box-sizing: border-box;
+            }
+            .partner-credit {
+                font-size: 0.95rem;
             }
             /* 手机端：表格字体恢复1rem */
             .about-projects-table {
@@ -480,8 +507,8 @@
     <p class="subtitle" data-lang="en">An organization focus on Open-Source Project for macOS, Linux and WSL.</p>
     <p class="subtitle" data-lang="zh">专注于 macOS、Linux 和 WSL 的开源项目组织。</p>
 
-    <a href="https://github.com/Sha0huaZhang" class="btn-github" data-lang="en">View On GitHub</a>
-    <a href="https://github.com/Sha0huaZhang" class="btn-github" data-lang="zh">在 GitHub 上查看</a>
+    <a href="https://github.com/MacWaveOrg" class="btn-github" data-lang="en">View On GitHub</a>
+    <a href="https://github.com/MacWaveOrg" class="btn-github" data-lang="zh">在 GitHub 上查看</a>
     
     <!-- Main Content -->
     <div class="content-section" style="padding: 20px 0; color: #ffffff; text-align: left;">
@@ -505,8 +532,8 @@
             macOS、Linux 或 WSL。
         </p>
 
-        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="en">Our Projects <span style="font-size: 0.8em; font-weight: normal;">(Click to open)</span></h2>
-        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="zh">我们的项目 <span style="font-size: 0.8em; font-weight: normal;">（点击打开）</span></h2>
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="en">Projects <span style="font-size: 0.8em; font-weight: normal;">(Click to open)</span></h2>
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="zh">项目 <span style="font-size: 0.8em; font-weight: normal;">（点击打开）</span></h2>
         
         <!-- Our Projects 卡片列表（纵向居中，动态对齐） -->
         <div class="projects-container" id="projectsContainer">
@@ -590,6 +617,43 @@
             </tbody>
         </table>
 
+        <!-- ====== Partner Projects 合作项目栏目 ====== -->
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="en">Partner Projects</h2>
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="zh">合作项目</h2>
+
+        <!-- Partner Projects 卡片列表（纵向居中，动态对齐） -->
+        <div class="projects-container" id="partnerProjectsContainer">
+            <a href="https://finx.sh" class="project-card" target="_blank">
+                <img src="partner1_big.jpg" alt="Finx" class="project-img-big">
+                <img src="partner1_small.jpg" alt="Finx" class="project-img-small">
+            </a>
+            <p class="partner-credit" data-lang="en">In collaboration with <a href="https://finx.sh" target="_blank">Fincote</a></p>
+            <p class="partner-credit" data-lang="zh">与 <a href="https://finx.sh" target="_blank">Fincote</a> 组织合作</p>
+        </div>
+
+        <!-- ====== About Partner Projects 表格 ====== -->
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="en">About Partner Projects</h2>
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="zh">关于合作项目</h2>
+        <table class="about-projects-table">
+            <thead>
+                <tr>
+                    <th data-lang="en">Project</th>
+                    <th data-lang="zh">项目</th>
+                    <th data-lang="en">Language</th>
+                    <th data-lang="zh">语言</th>
+                    <th data-lang="en">License</th>
+                    <th data-lang="zh">许可证</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="https://finx.sh" target="_blank">Finx</a></td>
+                    <td>Perl &amp; Shell</td>
+                    <td>GPL v2</td>
+                </tr>
+            </tbody>
+        </table>
+
 
     <!-- Contact Us -->
     <div class="contact-section">
@@ -599,7 +663,7 @@
         <div class="contact-items">
             <div class="contact-item">
                 <span class="contact-label">GitHub</span>
-                <a href="https://github.com/Sha0huaZhang" target="_blank">@Sha0huaZhang</a>
+                <a href="https://github.com/MacWaveOrg" target="_blank">@MacWaveOrg</a>
             </div>
             <div class="contact-item">
                 <span class="contact-label">Twitter</span>
